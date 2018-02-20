@@ -1,6 +1,6 @@
 abstract class State {
-   abstract copy(): State
-   abstract equals(): Boolean
+   public abstract copy(): State
+   public abstract equals(state: State): boolean
 }
 
 export default State

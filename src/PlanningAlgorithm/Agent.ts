@@ -3,14 +3,14 @@ import Action from './Action'
 import State from './State'
 
 abstract class Agent {
-   name: String = 'Abstract agent'
-   enviroment: Enviroment
-   actions: Action[]
-   constructor(enviroment: Enviroment){
-      this.enviroment = enviroment
-   }
+    public name: string = 'Abstract agent'
+    public enviroment: Enviroment
+    public actions: Action[]
+    constructor(enviroment: Enviroment) {
+        this.enviroment = enviroment
+    }
 
-   abstract makeDecision(state: State): Action
+    public abstract makeDecision(): Action
 }
 
 export default Agent

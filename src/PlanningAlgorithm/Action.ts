@@ -1,4 +1,3 @@
-import State from './State'
 import Agent from './Agent'
 
 class Action {
@@ -6,8 +5,8 @@ class Action {
    constructor(initiator: Agent) {
        this.initiator = initiator
    }
-   public execute(state: State): State {
-       return state.copy()
+   public execute(state: any): any {
+       return Object.assign({}, state)
    }
 }
 

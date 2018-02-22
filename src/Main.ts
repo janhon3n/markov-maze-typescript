@@ -3,17 +3,16 @@ import Stage from './MarkovMaze/Stage'
 import GameState from './MarkovMaze/GameState'
 import Simulation from './PlanningAlgorithm/Simulation'
 import MarkovSocket from './Socket/MarkovSocket'
-import Player from './MarkovMaze/Player'
+import Player from './MarkovMaze/Players/Player'
+import RandomPlayer from './MarkovMaze/Players/RandomPlayer'
+import StageLoader from './StageLoader'
 
-const initialState = new GameState()
-initialState.playerPositions.push([1, 5])
-initialState.coinPositions.push([5, 2], [6, 1])
-const testStage = new Stage([10, 10], initialState)
-testStage.agents.push(new Player(testStage))
-const testSimulation = new Simulation(testStage)
+const players = [new RandomPlayer(0), new Player(1)]
+const stage = StageLoader.createStage('testStage', players)
+const testSimulation = new Simulation(stage)
 
 const socket = new MarkovSocket()
-socket.setStage(testStage)
+socket.setStage(stage)
 testSimulation.addListener(socket)
 
 testSimulation.run()

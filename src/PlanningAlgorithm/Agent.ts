@@ -1,13 +1,14 @@
 import Enviroment from './Enviroment'
 import Action from './Action'
-import State from './State'
 
 abstract class Agent {
     public name: string = 'Abstract agent'
     public enviroment: Enviroment
     public actions: Action[]
-    constructor(enviroment: Enviroment) {
-        this.enviroment = enviroment
+    public index: number
+
+    constructor(index: number) {
+        this.index = index
     }
 
     public abstract makeDecision(): Action

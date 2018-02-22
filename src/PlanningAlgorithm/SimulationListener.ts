@@ -1,7 +1,5 @@
-import State from './State'
-
 abstract class SimulationListener {
-    public abstract update(state: State)
+    public abstract update(state: any)
 }
 
 export default SimulationListener

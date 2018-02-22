@@ -1,14 +1,15 @@
-import State, { StateError } from './State'
 import Agent from './Agent'
 import Action from './Action'
+import StateError from './StateError'
 
 abstract class Enviroment {
     public agents: Agent[]
-    public state: State
+    public state: any
 
-    constructor(initialState: State) {
+    constructor(initialState: any, agents: Agent[]) {
         this.state = initialState
-        this.agents = []
+        this.agents = agents
+        agents.forEach((agent) => agent.enviroment = this)
     }
 
     public abstract goalStateReached(): boolean
@@ -21,9 +22,10 @@ abstract class Enviroment {
                 ' tried to execute an action that' +
                 'would make the state invalid')
         }
+        this.state = newState
     }
 
-    public abstract stateIsValid(state: State): boolean
+    public abstract stateIsValid(state: any): boolean
 }
 
 export default Enviroment

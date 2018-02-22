@@ -1,7 +1,7 @@
 import * as sio from 'socket.io'
 import SimulationListener from '../PlanningAlgorithm/SimulationListener'
 import GameState from '../MarkovMaze/GameState'
-import Stage from '../MarkovMaze/Stage'
+import Stage, {StageData} from '../MarkovMaze/Stage'
 
 class MarkovSocket extends SimulationListener {
     private io: any
@@ -19,28 +19,14 @@ class MarkovSocket extends SimulationListener {
     }
 
     public setStage(stage: Stage) {
-        const stageObject = {
-            cols: stage.dimensions[1],
-            rows: stage.dimensions[0],
-            walls: stage.wallPositions.map((wallPos) => {
-                return { row: wallPos[0], col: wallPos[1] }
-            }),
-        }
-        this.stageCache = stageObject
-        this.io.sockets.emit('setStage', stageObject)
+        const stageData = stage.getStageData()
+        this.stageCache = stageData
+        this.io.sockets.emit('setStage', stageData)
     }
 
     public update(state: GameState) {
-        const stateObject = {
-            coins: state.coinPositions.map((pos) => {
-                return { row: pos[0], col: pos[1] }
-            }),
-            players: state.playerPositions.map((pos) => {
-                return { row: pos[0], col: pos[1] }
-            }),
-        }
-        this.stateCache = stateObject
-        this.io.sockets.emit('updateState', stateObject)
+        this.stateCache = state
+        this.io.sockets.emit('updateState', state)
     }
 }
 

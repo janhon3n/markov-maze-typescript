@@ -27,16 +27,15 @@ class Simulation {
         this.listeners.forEach((listener) => {
             listener.update(this.enviroment.state)
         })
-        setTimeout(this.run, 0)
+        setTimeout(this.run, 1000)
     }
 
     private runTurnForAgent(agent: Agent) {
         let turnSuccessful = false // The agents must make a decision that is executed successfully
         while (!turnSuccessful) {
             try {
-                this.enviroment.executeAction(
-                    agent.makeDecision(),
-                )
+                const action = agent.makeDecision()
+                this.enviroment.executeAction(action)
                 turnSuccessful = true
             } catch (error) {
                 console.log('Turn ' + this.turnNumber, error)

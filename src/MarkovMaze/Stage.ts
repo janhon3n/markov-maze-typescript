@@ -4,11 +4,13 @@ import Enviroment from '../PlanningAlgorithm/Enviroment'
 class Stage extends Enviroment {
 
     public dimensions: [number, number]
+    public wallPositions: Array<[number, number]>
 
     public state: GameState
     constructor(dimensions: [number, number], initialState: GameState) {
         super(initialState)
         this.dimensions = dimensions
+        this.wallPositions = []
     }
 
     public goalStateReached(): boolean {
@@ -17,7 +19,7 @@ class Stage extends Enviroment {
 
     public stateIsValid(state: GameState): boolean {
         // TODO
-        return false
+        return true
     }
 }
 

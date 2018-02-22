@@ -4,12 +4,14 @@
   "description": "",
   "main": "/build/js/src/Main.js",
   "scripts": {
-    "start": "node ./build/js/src/MarkovMaze/Main.js",
+    "start": "node ./build/js/src/Main.js",
     "test": "ts-mocha test/*"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.16.2",
+    "socket.io": "^2.0.4",
     "webpack": "^3.11.0"
   },
   "devDependencies": {

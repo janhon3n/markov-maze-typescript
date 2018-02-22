@@ -4,9 +4,12 @@
       "sourceMap": true,
       "isolatedModules": true,
       "outDir": "./build/js/",
-      "target": "es5",
+      "target": "es2016",
       "allowJs": true,
       "baseUrl": "./src",
-      "watch": true
+      "watch": true,
+      "typeRoots": [
+          "./node_modules/@types"
+      ]
    }
 }

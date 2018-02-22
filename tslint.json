@@ -10,7 +10,9 @@
         "semicolon": [true, "never"],
         "ordered-imports": [false],
         "max-classes-per-file": [false],
-        "no-console": [false]
+        "no-console": [false],
+        "interface-name": [false],
+        "object-literal-sort-keys": [false]
     },
     "rulesDirectory": []
 }

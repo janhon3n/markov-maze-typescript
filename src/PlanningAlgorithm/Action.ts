@@ -1,9 +1,14 @@
 import State from './State'
 import Agent from './Agent'
 
-abstract class Action {
+class Action {
    public initiator: Agent
-   public abstract execute(state: State): State
+   constructor(initiator: Agent) {
+       this.initiator = initiator
+   }
+   public execute(state: State): State {
+       return state.copy()
+   }
 }
 
 export default Action
